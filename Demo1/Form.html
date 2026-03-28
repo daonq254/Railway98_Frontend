@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Demo</title>
+  </head>
+  <body>
+    <h3>Tạo mới Account</h3>
+    <form action="">
+      <fieldset>
+        <legend>Thông tin cơ bản</legend>
+        <!-- Email -->
+        <label for="email_name">Email:</label>
+        <input type="email" id="email_id" name="email_name" placeholder="input email" required autofocus />
+        <br />
+
+        <!-- Username -->
+        <label for="username_name">Username:</label>
+        <input type="text" id="username_id" name="username_name" placeholder="Input Username" required />
+        <br />
+
+        <!-- Fullname -->
+        <label for="fullname_name">Fullname:</label>
+        <input type="text" id="fullname_id" name="fullname_name" placeholder="Input Fullname" required />
+        <br />
+
+        <!-- Department -->
+        <label for="Department">Department:</label>
+        <select name="Department_name" id="Department_id">
+          <option value="">-- Select Department --</option>
+          <option value="1">Giám đốc</option>
+          <option value="2">Nhân sự</option>
+          <option value="3">IT</option>
+          <option value="4">Sale</option>
+        </select>
+        <br />
+        <!-- Position -->
+        <label for="position">Select a Position:</label>
+        <select id="position" name="position">
+          <option value="">-- Select Position --</option>
+          <option value="test">Test</option>
+          <option value="dev">Developer</option>
+          <option value="leader">Leader</option>
+        </select>
+        <!-- <input type="submit" /> -->
+        <br />
+      </fieldset>
+      <!-- Thông tin bổ sung -->
+      <fieldset>
+        <legend>Thông tin bổ sung</legend>
+
+        <label for="">Giới tính</label>
+        <br />
+        <input type="radio" name="gender" checked />Male <br />
+        <input type="radio" name="gender" />FeMale <br />
+        <input type="radio" name="gender" />Other
+        <br />
+
+        <label for="">Sở thích:</label><br />
+        <input type="checkbox" name="hobby" />Ăn uống <br />
+        <input type="checkbox" name="hobby" />Âm nhạc <br />
+        <input type="checkbox" name="hobby" />Thể thao <br />
+        <input type="checkbox" name="hobby" />Đọc sách <br />
+        <br />
+
+        <label for="">Ảnh đại diện:</label><br />
+        <input type="file" />
+      </fieldset>
+      <button>Create</button>
+      <input type="reset" />
+    </form>
+  </body>
+</html>

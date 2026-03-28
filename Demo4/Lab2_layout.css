@@ -1,0 +1,48 @@
+* {
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.Container {
+  background-color: bisque;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  background-color: lightcoral;
+  width: 100%;
+  height: 40px;
+}
+
+.banner {
+  background-color: rgb(128, 240, 208);
+  width: 100%;
+  height: 100px;
+}
+
+.main1 {
+  background-color: rgb(193, 104, 37);
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+}
+.main1_left {
+  background-color: rgb(127, 97, 74);
+  width: 400px;
+  height: 250px;
+}
+
+.main1_center {
+  background-color: rgb(82, 40, 142);
+  width: 400px;
+  height: 250px;
+}
+
+.main1_right {
+  background-color: rgb(254, 53, 53);
+  width: 400px;
+  height: 250px;
+}
