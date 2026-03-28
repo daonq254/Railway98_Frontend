@@ -1,10 +1,11 @@
 console.log("HRM");
 // Khai báo mảng global để lưu trữ danh sách tài khoản
 var listAccount = [];
-
+var listDepartment = [];
 // Load dữ liệu API Account
 getListAccount();
-
+getListDepartment();
+//
 function getListAccount(params) {
   $.ajax({
     type: "GET",
@@ -18,6 +19,26 @@ function getListAccount(params) {
       listAccount = response;
       // Hiển thị dữ liệu ở bảng kết quả
       showListAccount();
+    },
+  });
+}
+
+function getListDepartment(params) {
+  // Lấy dữ liệu API Department
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:8080/api/v1/departments",
+    // data: "data",
+    dataType: "json",
+    success: function (response) {
+      console.log("Response API Department: ", response);
+      listDepartment = response;
+      // Hiên thị dữ liệu ở dropdownlist Department
+      for (let index = 0; index < listDepartment.length; index++) {
+        $("#Department_ID").append(`
+           <option value="${listDepartment[index].id}">${listDepartment[index].name}</option>
+          `);
+      }
     },
   });
 }
