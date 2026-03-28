@@ -163,10 +163,19 @@ function showListAccount() {
 function handleDelete(indexParam) {
   // console.log("Delete button indexParam: " + indexParam);
   // Xóa phần tử tại vị trí indexParam trong mảng listAccount
+  var account_delete_id = listAccount[indexParam].id;
   var resultConfirm = confirm("Bạn có chắc chắn muốn xóa tài khoản này không?");
   if (resultConfirm == true) {
-    listAccount.splice(indexParam, 1);
-    showListAccount();
+    // listAccount.splice(indexParam, 1);
+    $.ajax({
+      type: "DELETE",
+      url: "http://localhost:8080/api/v1/accounts/" + account_delete_id,
+      // data: "data",
+      // dataType: "dataType",
+      success: function (response) {
+        showListAccount();
+      },
+    });
   } else {
     alert("Bạn đã hủy xóa tài khoản này!");
   }
