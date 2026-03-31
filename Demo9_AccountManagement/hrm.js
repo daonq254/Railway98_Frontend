@@ -3,6 +3,9 @@ console.log("HRM");
 var listAccount = [];
 var listDepartment = [];
 var listPossition = [];
+// Khai báo 2 biến curentPage va curentSize để lưu trữ thông tin phân trang
+var curentPage = 5; // Trang hiện tại, mặc định là trang 1
+var curentSize = 2; // Số lượng bản ghi trên mỗi trang, mặc định là 5
 // Load dữ liệu API Account
 getListAccount();
 getListDepartment();
@@ -11,20 +14,39 @@ getListPosition();
 function getListAccount(params) {
   $.ajax({
     type: "GET",
-    url: "http://localhost:8080/api/v1/accounts",
+    // url: "http://localhost:8080/api/v1/accounts?size=" + curentSize + "&page=" + curentPage,
+    url: `http://localhost:8080/api/v1/accounts?size=${curentSize}&page=${curentPage}`,
     // data: "data",
     dataType: "json",
     success: function (response) {
       //
       console.log("Response API: ", response);
       // gán dữ liệu vào listAccount
-      listAccount = response;
+      listAccount = response.content;
       // Hiển thị dữ liệu ở bảng kết quả
       showListAccount();
+
+      // Hiển thị thông tin phân trang
+      var totalPages = response.totalPages; // Tổng số trang
+      pagingTable(totalPages);
+      //
     },
   });
 }
-
+// hàm hiển thị thông tin phân trang
+function pagingTable(totalPages) {
+  for (let index = 1; index <= totalPages; index++) {
+    if (index == curentPage) {
+      $("#pagination_Id").append(`
+        <li class="active"><a href="#">${index}</a></li>
+      `);
+    } else {
+      $("#pagination_Id").append(`
+        <li><a href="#">${index}</a></li>
+      `);
+    }
+  }
+}
 function getListDepartment(params) {
   // Lấy dữ liệu API Department
   $.ajax({
