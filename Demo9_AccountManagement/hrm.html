@@ -9,6 +9,7 @@
     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -91,13 +92,34 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Fullname</th>
-                <th>Department</th>
-                <th>Position</th>
-                <th>Cretate Date</th>
+                <th>
+                  ID
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('id')"></i>
+                </th>
+                <th>
+                  Email
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('email')"></i>
+                </th>
+                <th>
+                  Username
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('username')"></i>
+                </th>
+                <th>
+                  Fullname
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('fullname')"></i>
+                </th>
+                <th>
+                  Department
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('department')"></i>
+                </th>
+                <th>
+                  Position
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('position')"></i>
+                </th>
+                <th>
+                  Cretate Date
+                  <i class="fa fa-fw fa-sort" onclick="changeSort('createDate')"></i>
+                </th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>

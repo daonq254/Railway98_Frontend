@@ -6,16 +6,26 @@ var listPossition = [];
 // Khai báo 2 biến curentPage va curentSize để lưu trữ thông tin phân trang
 var curentPage = 1; // Trang hiện tại, mặc định là trang 1
 var curentSize = 5; // Số lượng bản ghi trên mỗi trang, mặc định là 5
+// Khai báo biến để sort dữ liệu
+var sortField = "id"; // Mặc định sort theo id
+var isAsc = true; // Mặc định sort theo thứ tự tăng dần (asc)
 // Load dữ liệu API Account
 getListAccount();
 getListDepartment();
 getListPosition();
 //
 function getListAccount(params) {
+  // Xây dựng đương link url
+  let v_url = "";
+  if (isAsc == true) {
+    v_url = `http://localhost:8080/api/v1/accounts?size=${curentSize}&page=${curentPage}&sort=${sortField},asc`;
+  } else {
+    v_url = `http://localhost:8080/api/v1/accounts?size=${curentSize}&page=${curentPage}&sort=${sortField},desc`;
+  }
   $.ajax({
     type: "GET",
     // url: "http://localhost:8080/api/v1/accounts?size=" + curentSize + "&page=" + curentPage,
-    url: `http://localhost:8080/api/v1/accounts?size=${curentSize}&page=${curentPage}`,
+    url: v_url,
     // data: "data",
     dataType: "json",
     success: function (response) {
@@ -82,6 +92,18 @@ function handleNext() {
   getListAccount();
 }
 
+// Hàm xử lý sort dữ liệu
+function changeSort(fieldParam) {
+  if (sortField == fieldParam) {
+    isAsc = !isAsc;
+  } else {
+    sortField = fieldParam;
+    isAsc = true;
+  }
+
+  getListAccount();
+}
+//
 function getListDepartment(params) {
   // Lấy dữ liệu API Department
   $.ajax({
