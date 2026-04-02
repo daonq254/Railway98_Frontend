@@ -4,8 +4,8 @@ var listAccount = [];
 var listDepartment = [];
 var listPossition = [];
 // Khai báo 2 biến curentPage va curentSize để lưu trữ thông tin phân trang
-var curentPage = 5; // Trang hiện tại, mặc định là trang 1
-var curentSize = 2; // Số lượng bản ghi trên mỗi trang, mặc định là 5
+var curentPage = 1; // Trang hiện tại, mặc định là trang 1
+var curentSize = 5; // Số lượng bản ghi trên mỗi trang, mặc định là 5
 // Load dữ liệu API Account
 getListAccount();
 getListDepartment();
@@ -35,18 +35,53 @@ function getListAccount(params) {
 }
 // hàm hiển thị thông tin phân trang
 function pagingTable(totalPages) {
+  $("#pagination_Id").empty();
+  // Hiển thị nút Previous
+  if (curentPage > 1) {
+    $("#pagination_Id").append(`
+    <li class="page-item"><a class="page-link" href="#" onclick="handlePrevious()">Previous</a></li>
+    `);
+  }
+
+  // Hiển thị các nút bấm 1 2 3 ...
   for (let index = 1; index <= totalPages; index++) {
     if (index == curentPage) {
       $("#pagination_Id").append(`
-        <li class="active"><a href="#">${index}</a></li>
+        <li class="active"><a href="#" onclick="handleChangePage(${index})">${index}</a></li>
       `);
     } else {
       $("#pagination_Id").append(`
-        <li><a href="#">${index}</a></li>
+        <li><a href="#" onclick="handleChangePage(${index})">${index}</a></li>
       `);
     }
   }
+  // Hiển thị nút next
+  if (curentPage < totalPages) {
+    $("#pagination_Id").append(`
+    <li class="page-item"><a class="page-link" href="#" onclick="handleNext()">Next</a></li> 
+    `);
+  }
 }
+//
+
+function handleChangePage(pageParam) {
+  if (pageParam == curentPage) {
+    return;
+  } else {
+    curentPage = pageParam;
+    getListAccount();
+  }
+}
+
+function handlePrevious() {
+  curentPage = curentPage - 1;
+  getListAccount();
+}
+function handleNext() {
+  curentPage = curentPage + 1;
+  getListAccount();
+}
+
 function getListDepartment(params) {
   // Lấy dữ liệu API Department
   $.ajax({
