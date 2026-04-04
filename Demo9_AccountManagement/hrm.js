@@ -22,6 +22,12 @@ function getListAccount(params) {
   } else {
     v_url = `http://localhost:8080/api/v1/accounts?size=${curentSize}&page=${curentPage}&sort=${sortField},desc`;
   }
+
+  var v_search = $("#Search_ID").val();
+  if (v_search) {
+    v_url = v_url + `&search=${v_search}`;
+  }
+  //
   $.ajax({
     type: "GET",
     // url: "http://localhost:8080/api/v1/accounts?size=" + curentSize + "&page=" + curentPage,
@@ -101,6 +107,10 @@ function changeSort(fieldParam) {
     isAsc = true;
   }
 
+  getListAccount();
+}
+// Hàm xử lý sự kiện khi người dùng nhấn nút Search
+function handleSearch() {
   getListAccount();
 }
 //
