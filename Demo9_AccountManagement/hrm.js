@@ -400,3 +400,7 @@ function handleLogin(params) {
     },
   });
 }
+// Hàm xử lý sự kiện khi người dùng nhấn nút Register ở trang Login
+function handleRegister(params) {
+  window.location.replace("RegisterPage.html");
+}
