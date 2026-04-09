@@ -34,6 +34,9 @@ function getListAccount(params) {
     url: v_url,
     // data: "data",
     dataType: "json",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+    },
     success: function (response) {
       //
       console.log("Response API: ", response);
@@ -121,6 +124,9 @@ function getListDepartment(params) {
     url: "http://localhost:8080/api/v1/departments",
     // data: "data",
     dataType: "json",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+    },
     success: function (response) {
       // console.log("Response API Department: ", response);
       listDepartment = response;
@@ -141,6 +147,9 @@ function getListPosition(params) {
     url: "http://localhost:8080/api/v1/possitions",
     // data: "data",
     dataType: "json",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+    },
     success: function (response) {
       // console.log("Response API Position: ", response);
       listPossition = response;
@@ -211,6 +220,9 @@ $("#save_btn").click(function (e) {
     url: "http://localhost:8080/api/v1/accounts",
     data: JSON.stringify(account), // Chuyển đổi đối tượng account thành chuỗi JSON để gửi lên server
     contentType: "application/json; charset=UTF-8",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+    },
     success: function (response) {
       getListAccount();
     },
@@ -261,6 +273,9 @@ function handleDelete(indexParam) {
       url: "http://localhost:8080/api/v1/accounts/" + account_delete_id,
       // data: "data",
       // dataType: "dataType",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+      },
       success: function (response) {
         showListAccount();
       },
@@ -326,6 +341,9 @@ $("#update_btn").click(function (e) {
     url: "http://localhost:8080/api/v1/accounts/" + v_ID_ID,
     data: JSON.stringify(account_update), // Chuyển đổi đối tượng account thành chuỗi JSON để gửi lên server
     contentType: "application/json; charset=UTF-8",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(localStorage.getItem("username") + ":" + localStorage.getItem("password")));
+    },
     success: function (response) {
       getListAccount();
     },
@@ -355,3 +373,30 @@ $("#update_btn").click(function (e) {
 
   // showListAccount();
 });
+// Hàm xử lý sự kiện khi người dùng nhấn nút Login
+function handleLogin(params) {
+  var v_username = $("#Username_Login_id").val();
+  var v_password = $("#Password_Login_id").val();
+
+  // console.log("Username: " + v_username);
+  // console.log("Password: " + v_password);
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:8080/api/v1/login",
+    // data: "data",
+    // dataType: "json",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "Basic " + btoa(v_username + ":" + v_password));
+    },
+    success: function (response) {
+      console.log("Login success: ", response); // OK
+      // Thực hiện lưu trữ lại thông tin login của người dùng
+      // Local Storage
+      localStorage.setItem("username", v_username);
+      localStorage.setItem("password", v_password);
+
+      alert("Đăng nhập thành công!");
+      window.location.replace("hrm.html");
+    },
+  });
+}
