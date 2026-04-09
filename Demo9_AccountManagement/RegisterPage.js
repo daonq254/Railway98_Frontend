@@ -61,9 +61,9 @@ $("#btn_register_id").click(function (e) {
     url: "http://localhost:8080/api/v1/accountsRegister",
     data: JSON.stringify(account_register), // Chuyển đổi đối tượng account thành chuỗi JSON để gửi lên server
     contentType: "application/json; charset=UTF-8",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Authorization", "Basic " + btoa("Username1:123456"));
-    },
+    // beforeSend: function (xhr) {
+    //   xhr.setRequestHeader("Authorization", "Basic " + btoa("Username1:123456"));
+    // },
     success: function (response) {
       alert("Đăng ký thành công!");
       window.location.replace("Login.html");
