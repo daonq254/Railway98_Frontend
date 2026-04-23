@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Person_1 = require("./Person");
+var Person_2 = require("./Person"); // myName
 var person1 = new Person_1.Person(1, "daonq1", "HN");
 // person1.id = 1;
 // person1.name = "daonq1";
@@ -10,7 +11,11 @@ var person2 = new Person_1.Person(2, "daonq2", "HN");
 // person2.name = "daonq2";
 // person2.address = "HN";
 // Templae String: `abc  ${tên biến}`
-console.log("Th\u00F4ng tin Person1: id=".concat(person1.getId(), ", name=").concat(person1.getName(), ", address=").concat(person1.getAddress()));
-console.log("Th\u00F4ng tin Person2: id=".concat(person2.getId(), ", name=").concat(person2.getName(), ", address=").concat(person2.getAddress()));
+// console.log(`Thông tin Person1: id=${person1.getId()}, name=${person1.getName()}, address=${person1.getAddress()}`);
+// console.log(`Thông tin Person2: id=${person2.getId()}, name=${person2.getName()}, address=${person2.getAddress()}`);
 // person1.showInfo();
 // person2.showInfo();
+// Tạo các đối tượng Student
+// Student 1
+// Student 2
+console.log("Tên tôi là:  " + Person_2.default);

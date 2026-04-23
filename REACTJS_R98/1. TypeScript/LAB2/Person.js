@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Person = void 0;
+exports.Person = exports.number = void 0;
 var Person = /** @class */ (function () {
     // contructor: hàm khởi tạo, được gọi khi tạo đối tượng từ class
     function Person(id, name, address) {
@@ -34,3 +34,6 @@ var Person = /** @class */ (function () {
     return Person;
 }());
 exports.Person = Person;
+var myName = "daonq";
+exports.number = [1, 2, 3, 4, 5];
+exports.default = myName;

@@ -39,4 +39,11 @@ class Person {
   }
 }
 
+var myName: String = "daonq";
+
+export var number: number[] = [1, 2, 3, 4, 5];
+
+// export { Person, myName, number };
 export { Person };
+
+export default myName;
