@@ -1,5 +1,5 @@
 // Cách 1: Khai báo hàm truyền thống
-import { number } from "./../LAB2/Person";
+// import { number } from "./../LAB2/Person";
 // function sum(a: number, b: number) {
 //   return a + b;
 // }
