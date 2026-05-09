@@ -2,6 +2,29 @@
 import React, { Component } from "react";
 
 class ComponentsTop extends Component {
+  // click_number = 0;
+  // Khai báo trong hàm contructor của class component
+  // Hàm đầu tiên được gọi khi class component được khởi tạo
+  constructor(props) {
+    super(props);
+    // Khai baos state để lưu trữ số lần người dùng click vào button
+    this.state = {
+      click_number: 0,
+      // a: "daonq",
+      // b: 40,
+    };
+  }
+
+  handleClick = () => {
+    // console.log("Click!!");
+    // this.click_number++;
+    // console.log("Click number: ", this.click_number);
+    // this.render();
+    // this.state.click_number = this.state.click_number + 1;
+    this.setState({
+      click_number: this.state.click_number + 1,
+    });
+  };
   // render(): hiển thị các thành phần của component ra giao diện người dùng
   render() {
     // Nhận lại dữ liệu từ App.js thông qua props
@@ -10,11 +33,11 @@ class ComponentsTop extends Component {
     // let data2 = this.props.data2;
     // let headingTop = this.props.headingTop;
     // Destructuring: Cú pháp phân rã, giúp lấy ra các giá trị từ một đối tượng hoặc mảng một cách dễ dàng hơn
-    let { data1, data2, headingTop,data3 } = this.props; // Lấy được giá trị của prop_data1, prop_data2 và prop_headingTop được truyền từ component cha App.js
+    let { data1, data2, headingTop, data3 } = this.props; // Lấy được giá trị của prop_data1, prop_data2 và prop_headingTop được truyền từ component cha App.js
 
-    console.log("data1: ", data1);
-    console.log("data2: ", data2);
-    console.log("data3: ", data3);
+    // console.log("data1: ", data1);
+    // console.log("data2: ", data2);
+    // console.log("data3: ", data3);
     return (
       <>
         <div className="row">
@@ -26,11 +49,11 @@ class ComponentsTop extends Component {
               <div className="panel-body">
                 <div className="row">
                   <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                    <input type="text" name="Input_Name" id="input" className="form-control" placeholder="Input something here" />
+                    <input type="text" className="form-control" value={this.state.click_number} />
                   </div>
 
                   <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <button type="button" className="btn btn-danger">
+                    <button type="button" className="btn btn-danger" onClick={this.handleClick}>
                       Sent Data
                     </button>
                   </div>
