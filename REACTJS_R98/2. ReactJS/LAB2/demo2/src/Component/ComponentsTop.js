@@ -1,5 +1,6 @@
 // rcc
 import React, { Component } from "react";
+import ComponentTopChidl from "./ComponentTopChidl";
 
 class ComponentsTop extends Component {
   // click_number = 0;
@@ -36,7 +37,7 @@ class ComponentsTop extends Component {
     // let data2 = this.props.data2;
     // let headingTop = this.props.headingTop;
     // Destructuring: Cú pháp phân rã, giúp lấy ra các giá trị từ một đối tượng hoặc mảng một cách dễ dàng hơn
-    let { data1, data2, headingTop, data3 } = this.props; // Lấy được giá trị của prop_data1, prop_data2 và prop_headingTop được truyền từ component cha App.js
+    let { data1, data2, headingTop, data3, DataAppToTopChild } = this.props; // Lấy được giá trị của prop_data1, prop_data2 và prop_headingTop được truyền từ component cha App.js
 
     // console.log("data1: ", data1);
     // console.log("data2: ", data2);
@@ -61,6 +62,8 @@ class ComponentsTop extends Component {
                       Sent Data
                     </button>
                   </div>
+
+                  <ComponentTopChidl DataAppToTopChild={DataAppToTopChild} />
                 </div>
               </div>
             </div>

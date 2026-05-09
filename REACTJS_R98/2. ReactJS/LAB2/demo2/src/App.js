@@ -45,6 +45,8 @@ class App extends Component {
     address: "Hanoi, Vietnam",
   };
 
+  DataAppToTopChild = "Data from App to ComponentTopChild";
+
   // Hàm callback để nhận dữ liệu từ Top component
   getDataFromTop = (data) => {
     console.log("getDataFromTop APP");
@@ -63,6 +65,8 @@ class App extends Component {
           data2={this.data2}
           data3={this.data3}
           headingTop="---------COMPONENT TOP--------"
+
+          DataAppToTopChild={this.DataAppToTopChild}
         />
         <ComponentsBottom dataApp={this.state.dataApp} headingBottom="---------COMPONENT BOTTOM--------" data1={this.data1} data2={this.data2} data3={this.data3} />
       </div>
