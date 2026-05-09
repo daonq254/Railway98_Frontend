@@ -8,7 +8,7 @@ function ComponentsBottom(props) {
   // let data2 = props.data2
   // let data3 = props.data3
 
-  let { headingBottom, data1, data2, data3 } = props;
+  let { headingBottom, data1, data2, data3, dataApp } = props;
   //
   return (
     <div className="row">
@@ -17,9 +17,7 @@ function ComponentsBottom(props) {
           <div className="panel-heading">{headingBottom}</div>
           <div className="panel-body">
             <div>
-              <textarea name="" id="input" className="form-control" rows="3" required="required">
-                Hello VTI
-              </textarea>
+              <textarea name="" id="input" className="form-control" rows="3" required="required" value={dataApp}></textarea>
             </div>
           </div>
         </div>
