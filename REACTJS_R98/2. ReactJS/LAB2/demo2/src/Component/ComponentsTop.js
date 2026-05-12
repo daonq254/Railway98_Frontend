@@ -16,6 +16,24 @@ class ComponentsTop extends Component {
   //   };
   // }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: "", // Khai báo state để lưu trữ giá trị của input
+    };
+  }
+
+  // Khai báo hàm xử lý sự kiện onChange của input
+
+  handleChange = (event) => {
+    // console.log("Change!!");
+    // console.log("Value: ", event);
+    let value = event.target.value; // Lấy giá trị của input từ event
+    this.setState({
+      input: value, // Cập nhật giá trị của input vào state
+    });
+  };
+
   dataTop = "Data from ComponentsTop";
 
   handleClick = () => {
@@ -27,7 +45,8 @@ class ComponentsTop extends Component {
     // this.setState({
     //   click_number: this.state.click_number + 1,
     // });
-    this.props.getDataFromTop(this.dataTop);
+    // this.props.getDataFromTop(this.dataTop);
+    alert("input: " + this.state.input);
   };
   // render(): hiển thị các thành phần của component ra giao diện người dùng
   render() {
@@ -54,7 +73,7 @@ class ComponentsTop extends Component {
                 <div className="row">
                   <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                     {/* <input type="text" className="form-control" value={this.state.click_number} /> */}
-                    <input type="text" className="form-control" />
+                    <input type="text" className="form-control" onChange={this.handleChange} value={this.state.input} />
                   </div>
 
                   <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
