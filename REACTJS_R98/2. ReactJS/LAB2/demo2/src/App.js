@@ -27,6 +27,7 @@ import ComponentsTop from "./Component/ComponentsTop";
 
 // export default App;
 import React, { Component } from "react";
+import LifeCycleDemo from "./LifeCycle/LifeCycleDemo";
 
 class App extends Component {
   //
@@ -58,18 +59,21 @@ class App extends Component {
   //
   render() {
     return (
-      <div className="App">
-        <ComponentsTop
-          getDataFromTop={this.getDataFromTop}
-          data1={this.data1}
-          data2={this.data2}
-          data3={this.data3}
-          headingTop="---------COMPONENT TOP--------"
+      // <div className="App">
+      //   <ComponentsTop
+      //     getDataFromTop={this.getDataFromTop}
+      //     data1={this.data1}
+      //     data2={this.data2}
+      //     data3={this.data3}
+      //     headingTop="---------COMPONENT TOP--------"
 
-          DataAppToTopChild={this.DataAppToTopChild}
-        />
-        <ComponentsBottom dataApp={this.state.dataApp} headingBottom="---------COMPONENT BOTTOM--------" data1={this.data1} data2={this.data2} data3={this.data3} />
-      </div>
+      //     DataAppToTopChild={this.DataAppToTopChild}
+      //   />
+      //   <ComponentsBottom dataApp={this.state.dataApp} headingBottom="---------COMPONENT BOTTOM--------" data1={this.data1} data2={this.data2} data3={this.data3} />
+      // </div>
+      <>
+      <LifeCycleDemo />
+      </>
     );
   }
 }
