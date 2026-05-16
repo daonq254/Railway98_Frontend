@@ -4,9 +4,15 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import InputForm from "./InputForm";
 
 function ModalCreateNewAccount(props) {
+  // 
+  let { showForm, onHandleCloseModal } = props;
+  //  hàm xư lý sự kiện khi click vào nút "Close" trong Modal
+  let handleCloseModal = () => {
+    onHandleCloseModal();
+  }
   return (
     <Container>
-      <Modal isOpen={true}>
+      <Modal isOpen={showForm}>
         <ModalHeader>
           <h3>Create New Account</h3>
         </ModalHeader>
@@ -14,7 +20,7 @@ function ModalCreateNewAccount(props) {
           <InputForm />
         </ModalBody>
         <ModalFooter>
-          <Button color="danger">Close</Button>
+          <Button color="danger" onClick={handleCloseModal}>Close</Button>
         </ModalFooter>
       </Modal>
     </Container>
