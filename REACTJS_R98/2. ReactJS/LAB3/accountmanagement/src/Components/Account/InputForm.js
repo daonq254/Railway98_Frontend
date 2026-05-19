@@ -33,6 +33,15 @@ function InputForm({onhandleCreateNewAccount}) {
     }
     onhandleCreateNewAccount(account_new);
   }
+
+  // Hàm xử lý sự kiện khi click vào nút "Reset"
+  let handleReset = () => {
+    SetEmail("");
+    SetUsername("");
+    SetFullname("");
+    SetDepartment("");
+    SetPostion("");
+  }
   return (
     <Container>
       <Form>
@@ -101,7 +110,7 @@ function InputForm({onhandleCreateNewAccount}) {
       <Button color="primary" onClick={handleCreate} >
         Create
       </Button>
-      <Button color="danger">Reset</Button>
+      <Button color="danger" onClick={handleReset}>Reset</Button>
 
     </Container>
   );

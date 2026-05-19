@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateButton from "../Components/Account/CreateButton";
 import ResultForm from "./../Components/Account/ResultForm";
 import ModalCreateNewAccount from "./../Components/Account/ModalCreateNewAccount";
@@ -28,11 +28,21 @@ function AccountContainer(props) {
     localStorage.setItem("listAccount", JSON.stringify(listAccount));
   }
 
+  // Load dữ liệu từ localStorage khi component được render lần đầu tiên
+  useEffect(() => {
+    if (localStorage && localStorage.getItem("listAccount")) {
+      let listAccount_Localstorage = JSON.parse(localStorage.getItem("listAccount"));
+      setListAccount(listAccount_Localstorage);
+    }
+
+  }, []);
+
+  // 
   return (
     <div>
       <CreateButton onHandleCreateNewAccount={onHandleCreateNewAccount} />
       <ModalCreateNewAccount showForm={showForm} onHandleCloseModal={onHandleCloseModal} onhandleCreateNewAccount={onhandleCreateNewAccount} />
-      <ResultForm />
+      <ResultForm listAccount={listAccount}/>
     </div>
   );
 }
