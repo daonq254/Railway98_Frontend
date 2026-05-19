@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 
-function InputForm(props) {
+function InputForm({onhandleCreateNewAccount}) {
+  
   // Khai báo state để quản lý dữ liệu của form
   let [Email, SetEmail] = useState("");
   let [Username, SetUsername] = useState("");
@@ -16,12 +17,21 @@ function InputForm(props) {
   // }
   // Hàm xử lý sự kiện khi click vào nút "Create"
   let handleCreate = () => {
-    console.log("Email: ", Email);  
-    console.log("Username: ", Username);
-    console.log("Fullname: ", Fullname);
-    console.log("Department: ", Department);
-    console.log("Postion: ", Postion);
-    
+    // console.log("Email: ", Email);  
+    // console.log("Username: ", Username);
+    // console.log("Fullname: ", Fullname);
+    // console.log("Department: ", Department);
+    // console.log("Postion: ", Postion);
+    let account_new = {
+      id: 1,
+      email: Email,
+      username: Username,
+      fullname: Fullname,
+      department: Department,
+      position: Postion,
+      createDate:"2026-05-19"
+    }
+    onhandleCreateNewAccount(account_new);
   }
   return (
     <Container>
