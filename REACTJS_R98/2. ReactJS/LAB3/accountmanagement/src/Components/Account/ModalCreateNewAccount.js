@@ -5,7 +5,7 @@ import InputForm from "./InputForm";
 
 function ModalCreateNewAccount(props) {
   // 
-  let { showForm, onHandleCloseModal, onhandleCreateNewAccount } = props;
+  let { showForm, onHandleCloseModal, onhandleCreateNewAccount, listDepartment } = props;
   //  hàm xư lý sự kiện khi click vào nút "Close" trong Modal
   let handleCloseModal = () => {
     onHandleCloseModal();
@@ -17,7 +17,7 @@ function ModalCreateNewAccount(props) {
           <h3>Create New Account</h3>
         </ModalHeader>
         <ModalBody>
-          <InputForm onhandleCreateNewAccount={onhandleCreateNewAccount} />
+          <InputForm onhandleCreateNewAccount={onhandleCreateNewAccount} listDepartment={listDepartment} />
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={handleCloseModal}>Close</Button>

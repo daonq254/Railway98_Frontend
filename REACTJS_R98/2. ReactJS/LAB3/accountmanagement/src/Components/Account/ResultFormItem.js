@@ -3,17 +3,17 @@ import { Container, Button } from "reactstrap";
 
 function ResultFormItem({ listAccount }) {
   // Hiển thị dữ liệu
-  let items = ""
+  let items = "";
   items = listAccount.map((account, index) => {
     return (
       <tr>
-        <td>1</td>
+        <td>{account.id}</td>
         <td>{account.email}</td>
         <td>{account.username}</td>
         <td>{account.fullname}</td>
         <td>{account.department}</td>
         <td>{account.position}</td>
-        <td>2022-02-22</td>
+        <td>{account.createDate}</td>
         <td>
           <Button color="warning">Edit</Button>
         </td>

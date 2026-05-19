@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 
-function InputForm({onhandleCreateNewAccount}) {
-  
+function InputForm({ onhandleCreateNewAccount, listDepartment }) {
+
   // Khai báo state để quản lý dữ liệu của form
   let [Email, SetEmail] = useState("");
   let [Username, SetUsername] = useState("");
@@ -29,7 +29,7 @@ function InputForm({onhandleCreateNewAccount}) {
       fullname: Fullname,
       department: Department,
       position: Postion,
-      createDate:"2026-05-19"
+      createDate: "2026-05-19"
     }
     onhandleCreateNewAccount(account_new);
   }
@@ -42,6 +42,14 @@ function InputForm({onhandleCreateNewAccount}) {
     SetDepartment("");
     SetPostion("");
   }
+
+  // Hiển thị danh sách phòng ban
+  let departmentItems = listDepartment.map((department, index) => {
+    return (
+      <option value={department.id}>{department.name}</option>
+      )
+  })
+  //  
   return (
     <Container>
       <Form>
@@ -83,11 +91,12 @@ function InputForm({onhandleCreateNewAccount}) {
               SetDepartment(event.target.value);
             }}
           >
-            <option value={"Bán hàng"}>Bán hàng</option>
+            {departmentItems}
+            {/* <option value={"Bán hàng"}>Bán hàng</option>
             <option value={"Bảo vệ"}>Bảo vệ</option>
             <option value={"Giám đốc"}>Giám đốc</option>
             <option value={"Kỹ thuật"}>Kỹ thuật</option>
-            <option value={"Marketing"}>Marketing</option>
+            <option value={"Marketing"}>Marketing</option> */}
           </Input>
         </FormGroup>
 
