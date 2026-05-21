@@ -22,15 +22,24 @@ function InputForm({ onhandleCreateNewAccount, listDepartment, listPosition }) {
     // console.log("Fullname: ", Fullname);
     // console.log("Department: ", Department);
     // console.log("Postion: ", Postion);
-    let account_new = {
-      id: 1,
+    // let account_new = {
+    //   id: 1,
+    //   email: Email,
+    //   username: Username,
+    //   fullname: Fullname,
+    //   department: Department,
+    //   position: Postion,
+    //   createDate: "2026-05-19"
+    // }
+    let account_new =
+    {
       email: Email,
       username: Username,
       fullname: Fullname,
-      department: Department,
-      position: Postion,
-      createDate: "2026-05-19"
+      departmentId: Department,
+      positionId: Postion
     }
+
     onhandleCreateNewAccount(account_new);
   }
 

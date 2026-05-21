@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import CreateButton from "../Components/Account/CreateButton";
 import ResultForm from "./../Components/Account/ResultForm";
 import ModalCreateNewAccount from "./../Components/Account/ModalCreateNewAccount";
-import axios from "axios";
-import { getListAcccountAPI } from "../API/AccountApi";
+import { getListAcccountAPI, addAccountNewAPI } from "../API/AccountApi";
 import { getListDepartmentAPI } from "../API/DepartmentAPI";
 import { getListPositionAPI } from "../API/PositionAPI";
 
@@ -33,9 +32,22 @@ function AccountContainer(props) {
     // 
 
     // console.log("click create new account");
-    setListAccount([...listAccount, account_new]);
+    // setListAccount([...listAccount, account_new]);
     // console.log("listAccount: ", listAccount);
-    localStorage.setItem("listAccount", JSON.stringify(listAccount));
+    // localStorage.setItem("listAccount", JSON.stringify(listAccount));
+    addAccountNewAPI(account_new).then((res) => {
+      setShowForm(false);
+      fetchListAccount();
+    });   // Đã thêm mới thành công DB
+
+  }
+
+  // 
+  let fetchListAccount = () => {
+    getListAcccountAPI().then((res) => {
+      setListAccount(res)
+    })
+
   }
 
   // Load dữ liệu từ localStorage khi component được render lần đầu tiên
@@ -52,10 +64,7 @@ function AccountContainer(props) {
     //   // console.log(listAccount_API);
     //   setListAccount(listAccount_API);
     // })
-    getListAcccountAPI().then((res) => {
-      setListAccount(res)
-    })
-
+    fetchListAccount();
     // load dữ liệu cho Department
     // axios.get(`http://localhost:8080/api/v1/departments`).then((response) => {
     //   // console.log(response);
