@@ -3,6 +3,9 @@ import CreateButton from "../Components/Account/CreateButton";
 import ResultForm from "./../Components/Account/ResultForm";
 import ModalCreateNewAccount from "./../Components/Account/ModalCreateNewAccount";
 import axios from "axios";
+import { getListAcccountAPI } from "../API/AccountApi";
+import { getListDepartmentAPI } from "../API/DepartmentAPI";
+import { getListPositionAPI } from "../API/PositionAPI";
 
 function AccountContainer(props) {
   // State để quản lý trạng thái của modal
@@ -11,6 +14,8 @@ function AccountContainer(props) {
   let [listAccount, setListAccount] = useState([]);
 
   let [listDepartment, setListDepartment] = useState([]);
+
+  let [listPosition, setListPosition] = useState([]);
   // Khai báo hàm callback nhận sự kiện từ CreateButton
   let onHandleCreateNewAccount = () => {
     // 
@@ -41,27 +46,43 @@ function AccountContainer(props) {
     // }
     // load dữ liệu từ API backend Account
     // Xử lý bất đồng bộ promise: then catch
-    axios.get(`http://localhost:8080/api/v1/accounts`).then((response) => {
-      // console.log(response);
-      let listAccount_API = response.data;
-      // console.log(listAccount_API);
-      setListAccount(listAccount_API);
+    // axios.get(`http://localhost:8080/api/v1/accounts`).then((response) => {
+    //   // console.log(response);
+    //   let listAccount_API = response.data;
+    //   // console.log(listAccount_API);
+    //   setListAccount(listAccount_API);
+    // })
+    getListAcccountAPI().then((res) => {
+      setListAccount(res)
     })
 
-// load dữ liệu cho Department
-    axios.get(`http://localhost:8080/api/v1/departments`).then((response) => {
-      // console.log(response);
-      let listDepartment_API = response.data;
-      // console.log(listAccount_API);
-      setListDepartment(listDepartment_API);
-    })
+    // load dữ liệu cho Department
+    // axios.get(`http://localhost:8080/api/v1/departments`).then((response) => {
+    //   // console.log(response);
+    //   let listDepartment_API = response.data;
+    //   // console.log(listAccount_API);
+    //   setListDepartment(listDepartment_API);
+    // })
+
+    getListDepartmentAPI().then((res) => { setListDepartment(res) })
+
+    // load dữ liệu cho Possition
+    // axios.get(`http://localhost:8080/api/v1/possitions`).then((response) => {
+    //   // console.log(response);
+    //   let listPosition_API = response.data;
+    //   // console.log(listAccount_API);
+    //   setListPosition(listPosition_API);
+    // })
+    getListPositionAPI().then((res) => { setListPosition(res) })
+
+    // 
   }, []);
 
   // 
   return (
     <div>
       <CreateButton onHandleCreateNewAccount={onHandleCreateNewAccount} />
-      <ModalCreateNewAccount showForm={showForm} onHandleCloseModal={onHandleCloseModal} onhandleCreateNewAccount={onhandleCreateNewAccount} listDepartment={listDepartment}/>
+      <ModalCreateNewAccount showForm={showForm} onHandleCloseModal={onHandleCloseModal} onhandleCreateNewAccount={onhandleCreateNewAccount} listDepartment={listDepartment} listPosition={listPosition} />
       <ResultForm listAccount={listAccount} />
     </div>
   );

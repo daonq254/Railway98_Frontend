@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 
-function InputForm({ onhandleCreateNewAccount, listDepartment }) {
+function InputForm({ onhandleCreateNewAccount, listDepartment, listPosition }) {
 
   // Khai báo state để quản lý dữ liệu của form
   let [Email, SetEmail] = useState("");
@@ -47,7 +47,14 @@ function InputForm({ onhandleCreateNewAccount, listDepartment }) {
   let departmentItems = listDepartment.map((department, index) => {
     return (
       <option value={department.id}>{department.name}</option>
-      )
+    )
+  })
+
+  // Hiển thị danh sách vị trí
+  let positionItems = listPosition.map((position, index) => {
+    return (
+      <option value={position.id}>{position.name}</option>
+    )
   })
   //  
   return (
@@ -108,10 +115,11 @@ function InputForm({ onhandleCreateNewAccount, listDepartment }) {
               SetPostion(event.target.value);
             }}
           >
-            <option value={"Dev"}>Dev</option>
+            {positionItems}
+            {/* <option value={"Dev"}>Dev</option>
             <option value={"Test"}>Test</option>
             <option value={"Scrum_Master"}>Scrum_Master</option>
-            <option value={"PM"}>PM</option>
+            <option value={"PM"}>PM</option> */}
           </Input>
         </FormGroup>
       </Form>
