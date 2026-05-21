@@ -7,12 +7,14 @@ import DepartmentManagement from './Components/DepartmentManagement';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import Error from './Components/Error';
+import Menu from './Components/Menu/Menu';
+import { routes } from './Router/Route';
 
 function App() {
   return (
     <div class="container">
       {/* Menu */}
-      <div className="row">
+      {/* <div className="row">
         <nav className="navbar navbar-inverse" style={{ backgroundColor: "black", color: "black" }}>
           <div className="container-fluid">
             <ul class="nav navbar-nav">
@@ -28,10 +30,10 @@ function App() {
             </ul>
           </div>
         </nav>
-      </div>
-
+      </div> */}
+      <Menu />
       {/* Content */}
-      <Routes>
+      {/* <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path="/AccountManagement" element={<AccountManagement />} />
@@ -41,7 +43,8 @@ function App() {
         <Route path="/Sign_Up" element={<SignUp />} />
         <Route path="*" element={<Error />} />
 
-      </Routes>
+      </Routes> */}
+      {routes}
       {/*  */}
     </div>
   );
