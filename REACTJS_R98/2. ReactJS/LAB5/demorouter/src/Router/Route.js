@@ -6,16 +6,18 @@ import DepartmentManagement from "../Components/DepartmentManagement";
 import Login from "../Components/Login";
 import SignUp from "../Components/SignUp";
 import Error from "../Components/Error";
+import AccountDetail from "../Components/AccountDetail";
 
 export let routes = (
-<Routes>
-    <Route path='/home' element={<Home />} />
-    <Route path='/about' element={<About />} />
-    <Route path="/AccountManagement" element={<AccountManagement />} />
-    <Route path="/DepartmentManagement" element={<DepartmentManagement />}
-    />
-    <Route path="/Login" element={<Login />} />
-    <Route path="/Sign_Up" element={<SignUp />} />
-    <Route path="*" element={<Error />} />
+    <Routes>
+        <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path="/AccountManagement" element={<AccountManagement />} />
+        <Route path="/DepartmentManagement" element={<DepartmentManagement />}
+        />
+        <Route path="/AccountDetail/:id_param" element={<AccountDetail />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Sign_Up" element={<SignUp />} />
+        <Route path="*" element={<Error />} />
 
-</Routes>)
+    </Routes>)
