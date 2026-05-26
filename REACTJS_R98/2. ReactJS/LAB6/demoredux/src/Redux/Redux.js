@@ -1,9 +1,8 @@
 // console.log("Hello Redux");
-import { createStore } from "redux";
 // import { ADD_ACCOUNT, GETALL_ACCOUNT, HIDE_INPUT_FORM, SHOW_INPUT_FORM } from "./Constants/ActionType";
 import { actionHideInputForm, actionShowInputForm } from "./Actions/FormAction";
 import { actionAddAccount } from "./Actions/AccountAction";
-import RootReducer from "./Reducers/rootReducer";
+import { store } from "./Store/storeRedux";
 // // Khai báo giá trị ban đầu cho các state
 // let initialState = {
 //     showForm: false,
@@ -40,7 +39,7 @@ import RootReducer from "./Reducers/rootReducer";
 //     }
 // }
 // Bước 1: Khai báo store
-let store = createStore(RootReducer);
+// let store = createStore(RootReducer);
 
 // Bước 4: Khai báo action
 // let actionShowInputForm = {
