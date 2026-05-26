@@ -5,10 +5,14 @@ import ModalCreateNewAccount from "./../Components/Account/ModalCreateNewAccount
 import { getListAcccountAPI, addAccountNewAPI } from "../API/AccountApi";
 import { getListDepartmentAPI } from "../API/DepartmentAPI";
 import { getListPositionAPI } from "../API/PositionAPI";
+import { useDispatch } from "react-redux";
+import { actionClose_InputForm, actionShowInputForm } from "../Redux/Action/FormAction";
 
 function AccountContainer(props) {
+  // 
+  let dispatchRedux = useDispatch();
   // State để quản lý trạng thái của modal
-  let [showForm, setShowForm] = React.useState(false);
+  // let [showForm, setShowForm] = React.useState(false);
   // Khai bao state listAccount để quản lý danh sách tài khoản
   let [listAccount, setListAccount] = useState([]);
 
@@ -18,13 +22,15 @@ function AccountContainer(props) {
   // Khai báo hàm callback nhận sự kiện từ CreateButton
   let onHandleCreateNewAccount = () => {
     // 
-    setShowForm(true);
+    // setShowForm(true);
+    dispatchRedux(actionShowInputForm());
   }
 
   // Khai báo hàm callback nhận sự kiện từ ModalCreateNewAccount
   let onHandleCloseModal = () => {
     // 
-    setShowForm(false);
+    // setShowForm(false);
+    dispatchRedux(actionClose_InputForm());
 
   }
   // Khai báo hàm callback nhận dữ liệu từ InputForm
@@ -36,7 +42,8 @@ function AccountContainer(props) {
     // console.log("listAccount: ", listAccount);
     // localStorage.setItem("listAccount", JSON.stringify(listAccount));
     addAccountNewAPI(account_new).then((res) => {
-      setShowForm(false);
+      // setShowForm(false);
+      dispatchRedux(actionClose_InputForm());
       fetchListAccount();
     });   // Đã thêm mới thành công DB
 
@@ -91,7 +98,7 @@ function AccountContainer(props) {
   return (
     <div>
       <CreateButton onHandleCreateNewAccount={onHandleCreateNewAccount} />
-      <ModalCreateNewAccount showForm={showForm} onHandleCloseModal={onHandleCloseModal} onhandleCreateNewAccount={onhandleCreateNewAccount} listDepartment={listDepartment} listPosition={listPosition} />
+      <ModalCreateNewAccount onHandleCloseModal={onHandleCloseModal} onhandleCreateNewAccount={onhandleCreateNewAccount} listDepartment={listDepartment} listPosition={listPosition} />
       <ResultForm listAccount={listAccount} />
     </div>
   );

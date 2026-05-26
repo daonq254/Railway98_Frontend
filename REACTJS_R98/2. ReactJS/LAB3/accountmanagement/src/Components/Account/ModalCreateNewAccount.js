@@ -2,14 +2,19 @@ import React from "react";
 import { Container } from "reactstrap";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import InputForm from "./InputForm";
+import { useSelector } from "react-redux";
 
 function ModalCreateNewAccount(props) {
   // 
-  let { showForm, onHandleCloseModal, onhandleCreateNewAccount, listDepartment, listPosition } = props;
+  let { onHandleCloseModal, onhandleCreateNewAccount, listDepartment, listPosition } = props;
   //  hàm xư lý sự kiện khi click vào nút "Close" trong Modal
   let handleCloseModal = () => {
     onHandleCloseModal();
   }
+  // Kết nối lên store redux và lấy về các state
+  let stateRedux = useSelector((state) => state);
+  let showForm = stateRedux.formState.showForm;
+
   return (
     <Container>
       <Modal isOpen={showForm}>
