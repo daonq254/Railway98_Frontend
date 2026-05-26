@@ -1,45 +1,46 @@
 // console.log("Hello Redux");
 import { createStore } from "redux";
-import { ADD_ACCOUNT, GETALL_ACCOUNT, HIDE_INPUT_FORM, SHOW_INPUT_FORM } from "./Constants/ActionType";
+// import { ADD_ACCOUNT, GETALL_ACCOUNT, HIDE_INPUT_FORM, SHOW_INPUT_FORM } from "./Constants/ActionType";
 import { actionHideInputForm, actionShowInputForm } from "./Actions/FormAction";
-import { actionAddAccount, actionAddAccount1, actionAddAccount2 } from "./Actions/AccountAction";
-// Khai báo giá trị ban đầu cho các state
-let initialState = {
-    showForm: false,
-    listAccount: [],
-}
-// Bước 2: Tạo reducer
-let reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SHOW_INPUT_FORM:
-            return {
-                ...state,
-                showForm: true,
-            }
-        case HIDE_INPUT_FORM:
-            return {
-                ...state,
-                showForm: false,
-            }
-        case ADD_ACCOUNT:
-            let accountNew = action.payload;
-            return {
-                ...state,
-                listAccount: [...state.listAccount, accountNew],
-            }
-        case GETALL_ACCOUNT:
-            return {
-                ...state,
-            };
+import { actionAddAccount } from "./Actions/AccountAction";
+import RootReducer from "./Reducers/rootReducer";
+// // Khai báo giá trị ban đầu cho các state
+// let initialState = {
+//     showForm: false,
+//     listAccount: [],
+// }
+// // Bước 2: Tạo reducer
+// let reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case SHOW_INPUT_FORM:
+//             return {
+//                 ...state,
+//                 showForm: true,
+//             }
+//         case HIDE_INPUT_FORM:
+//             return {
+//                 ...state,
+//                 showForm: false,
+//             }
+//         case ADD_ACCOUNT:
+//             let accountNew = action.payload;
+//             return {
+//                 ...state,
+//                 listAccount: [...state.listAccount, accountNew],
+//             }
+//         case GETALL_ACCOUNT:
+//             return {
+//                 ...state,
+//             };
 
 
 
-        default:
-            return { ...state }
-    }
-}
+//         default:
+//             return { ...state }
+//     }
+// }
 // Bước 1: Khai báo store
-let store = createStore(reducer);
+let store = createStore(RootReducer);
 
 // Bước 4: Khai báo action
 // let actionShowInputForm = {
